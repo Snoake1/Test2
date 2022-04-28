@@ -1,0 +1,8 @@
+*.user
+build
+Makefile
+edt/editor
+*.o
+*.gcda
+*.gdno
+tests/tests
