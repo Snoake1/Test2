@@ -61,6 +61,22 @@ int main()
             continue;
         }
 
+	if (strcmp(cmd, "snempty") == 0){
+	    shownonempty(txt);
+	    continue;
+	}
+
+	if (strcmp(cmd, "mwbb") == 0){
+	    txt = mwbb(txt);
+	    continue;
+	}
+
+	if (strcmp(cmd, "rc") == 0){
+	    txt = rc(txt);
+	    show(txt);
+	    continue;
+	}
+
 	if (strcmp(cmd, "save") == 0) {
            if ((arg = strtok(NULL, " \n")) == NULL) {
                fprintf(stderr, "Usage: save filename\n");

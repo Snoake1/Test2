@@ -24,18 +24,45 @@ void show(text txt)
     /* Применяем функцию show_line к каждой строке текста */
     process_forward(txt, show_line, NULL);
 }
-/*
+
+
 void shownonempty(text txt)
-{
+{   
     if (txt == NULL || txt->length == 0)
     {
-	fprintf(stderr, "There are already no ant lines the text!\n");
+	fprintf(stderr, "There are already no any lines the text!\n");
 	return;
     }
+
+    int cursor_position = -1;
+
     assert(txt->begin != NULL && txt->end != NULL);
-    
-    
-}*/
+
+    node *current = txt->begin;
+    int index = 0;
+    int stind = 0;
+	
+    while(current){
+    if (strcmp(current->contents, "") != 0)
+        {
+	    if (txt->cursor->line == current)
+		cursor_position = txt->cursor->position;
+	    else
+		cursor_position = -1;
+	show_line(index, current->contents, cursor_position, NULL);
+	
+	current = current->next;
+	index++;
+	stind++;
+        }
+    else
+        {
+	current = current->next;
+	index++;
+	}
+    }
+
+}
 
 /**
  * Выводит содержимое указанного файла на экран

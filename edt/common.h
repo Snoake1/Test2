@@ -20,6 +20,7 @@
  */
 void show(text txt);
 
+void shownonempty(text txt);
 /**
  * Загружает содержимое указанного файла
  */ 
@@ -32,4 +33,7 @@ void save(text txt, char *filename);
 
 void mcursor(text txt, int str, int pos);
 
+text mwbb(text txt);
+
+text rc(text txt);
 #endif

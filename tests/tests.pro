@@ -19,7 +19,8 @@ DEFINES += INPUTDIR=\\\"$$PWD/input/\\\"
 HEADERS +=  tests.h \
     ../edt/common.h \
     ../edt/text.h \
-    ../edt/_text.h
+    ../edt/_text.h \
+    tests_out.h
 
 SOURCES += main.cpp \
    ../edt/mcursor.c \
@@ -29,11 +30,13 @@ SOURCES += main.cpp \
    ../edt/text/append_line.c \
    ../edt/text/create_text.c \
    ../edt/text/process_forward.c \
-   ../edt/text/remove_all.c
+   ../edt/text/remove_all.c \
+   ../edt/rc.c \
+   ../edt/mwbb.c
 
 INCLUDEPATH += ../edt
 
 DISTFILES += \
-    input/input.txt \
+    input.txt \
     input/test_in.txt \
     input/test_sweb.txt
