@@ -10,7 +10,7 @@
 #include <string.h>
 #include "common.h"
 #include "text/text.h"
-#include <fstream>
+
 
 /**
  * Загружает содержимое указанного файла
@@ -35,5 +35,5 @@ void load(text txt, char *filename)
 	buf[strlen(buf) - 1] = '\0';
 	append_line(txt, buf);
     }
-    f.close()
+    fclose(f);
 }
