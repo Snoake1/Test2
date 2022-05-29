@@ -29,8 +29,8 @@ text rc(text txt){
     }
     
     if (pos == 1){
-	free(current);
 	txt->begin = current->next;
+	free(current);
 	txt->length--;
         mcursor(txt, 0, 0);
 	return txt;
