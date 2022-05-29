@@ -37,7 +37,6 @@ text rc(text txt){
     }
     
     if (pos == txt->length){
-	free(current);
 	current=current->previous;
 	current->next = NULL;
 	txt->length--;
@@ -45,7 +44,6 @@ text rc(text txt){
 	return txt;
     }
     
-    free(current);
     current = current->next;
     current->previous = prevstr;
     current = current->previous;
