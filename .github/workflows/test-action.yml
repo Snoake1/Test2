@@ -14,7 +14,7 @@ jobs:
       - run: ./tests/tests
 
       - name: Coveralls
-        run: coveralls -t ${{ secrets.coveralls_token }} --root . -E ".*external.*" -E ".*tests.*" -E ".*editor/editor.*"
+        run: coveralls -t ${{ secrets.coveralls_token }} --root . -E ".*external.*" -E ".*tests.*" -E ".*edt/editor.*" -E ".*edt/create_text.c.*"
 
 
   sonarcloud-check:
