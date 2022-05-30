@@ -14,7 +14,7 @@ jobs:
       - run: ./tests/tests
 
       - name: Coveralls
-        run: coveralls -t ${{ secrets.coveralls_token }} --root . -E ".*external.*" -E ".*tests.*" -E ".*edt/editor.*" -E ".*edt/create_text.*" -E ".*append_line.*" -E ".*process_forwarf.*" -E ".*remove_all.*"
+        run: coveralls -t ${{ secrets.coveralls_token }} --root . -E ".*external.*" -E ".*tests.*" -E ".*edt/editor.*" -E ".*edt/create_text.*" -E ".*edt/append_line.*" -E ".*edt/process_forwarf.*" -E ".*edt/remove_all.*"
 
 
   sonarcloud-check:
