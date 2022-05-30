@@ -182,7 +182,7 @@ TEST(rmstr, laststr)
     text txt = create_text();
     load(txt, filename);
     unsigned long ln1 = txt->length;
-    mcursor(txt, -1, -1);
+    mcursor(txt, 1000000, 1);
     rc(txt);
     unsigned long ln2 = txt->length;
     EXPECT_EQ(txt->cursor->position, 0);
