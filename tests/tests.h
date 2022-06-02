@@ -44,7 +44,6 @@ TEST(save, saved){
     while(std::getline(f, s) && std::getline(c, s_c)){
         EXPECT_EQ(s, s_c);
     }
-   /* EXPECT_TRUE(std::getline(f, s) || std::getline(c, s_c)); */
     f.close();
     c.close();
     remove_all(txt);
