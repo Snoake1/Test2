@@ -24,27 +24,6 @@ TEST(load, noreadfile)
     remove_all(txt);
 }
 
-TEST(save, noopen)
-{
-    text txt = create_text();
-    testing::internal::CaptureStderr();
-    load(txt, "input.txt");
-    save(txt, "noopenfile.txt");
-    std::string out = testing::internal::CapturedStderr();
-    EXPECT_EQ(out, "The file noopenfile.txt cannot be written\n");
-    remove_all(txt);
-}
-
-TEST(save, notext)
-{
-    text txt = create_text();
-    testing::internal::CaptureStderr();
-    save(txt, "noopenfile.txt");
-    std::string out = testing::internal::CapturedStderr();
-    EXPECT_EQ(out, "Usage:");
-    remove_all(txt);
-}
-
 TEST(move_cursor, outerr)
 {
     text txt = create_text();
