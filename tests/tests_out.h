@@ -24,6 +24,17 @@ TEST(load, noreadfile)
     remove_all(txt);
 }
 
+TEST(save, nowritefile)
+{
+    text txt = create_text();
+    load(txt, filenm);
+    testing::internal::CaptureStdout;
+    save(txt, "nowritefile.txt");
+    std::string out = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(out, "The file nowritefile.txt cannot be written\n");
+    remove_all(txt);
+}
+
 TEST(move_cursor, outerr)
 {
     text txt = create_text();
