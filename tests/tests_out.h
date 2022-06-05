@@ -23,7 +23,7 @@ TEST(load, noreadfile)
     EXPECT_EQ(out, "The file notrealfile.txt cannot be opened\n");
     remove_all(txt);
 }
-
+/*
 TEST(save, nowritefile)
 {
     text txt = create_text();
@@ -33,6 +33,15 @@ TEST(save, nowritefile)
     std::string out = testing::internal::GetCapturedStdout();
     EXPECT_EQ(out, "The file nowritefile.txt cannot be written\n");
     remove_all(txt);
+} */
+
+TEST(save, nofile)
+{
+    text txt = create();
+    testing::internal::CaptureStderr;
+    save(txt, "out.txt");
+    std::string out = testing::internal::GetCapturedStderr();
+    EXPECT_EQ(out, "The text doesn`t exist\n")
 }
 
 TEST(move_cursor, outerr)
