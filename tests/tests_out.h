@@ -37,7 +37,7 @@ TEST(save, nowritefile)
 
 TEST(save, nofile)
 {
-    text txt = create();
+    text txt = create_text();
     testing::internal::CaptureStderr;
     save(txt, "out.txt");
     std::string out = testing::internal::GetCapturedStderr();
