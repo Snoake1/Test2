@@ -23,17 +23,17 @@ TEST(load, noreadfile)
     EXPECT_EQ(out, "The file notrealfile.txt cannot be opened\n");
     remove_all(txt);
 }
-/*
+
 TEST(save, nowritefile)
 {
     text txt = create_text();
     load(txt, filenm);
-    testing::internal::CaptureStdout;
+    testing::internal::CaptureStderr;
     save(txt, "nowritefile.txt");
-    std::string out = testing::internal::GetCapturedStdout();
+    std::string out = testing::internal::GetCapturedStderr();
     EXPECT_EQ(out, "The file nowritefile.txt cannot be written\n");
     remove_all(txt);
-} */
+}
 
 TEST(save, nofile)
 {
