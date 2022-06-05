@@ -40,8 +40,9 @@ TEST(save, nofile)
     text txt = create_text();
     testing::internal::CaptureStderr;
     save(txt, "out.txt");
-    std::string out = testing::internal::GetCapturedStderr();
-    EXPECT_EQ(out, "The text doesn`t exist\n")
+    std::string outp = testing::internal::GetCapturedStderr();
+    EXPECT_EQ(outp, "The text doesn`t exist\n");
+    remove_all(txt);
 }
 
 TEST(move_cursor, outerr)
