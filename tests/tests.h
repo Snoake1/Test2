@@ -12,6 +12,7 @@ extern "C"{
 }
 
 char* filename = "input.txt";
+char* oneline = "oneline.txt";
 
 TEST(load, correct_load)
 {
@@ -162,18 +163,29 @@ TEST(rmstr, firststr)
     remove_all(txt);
 }
 TEST(rmstr, nstr)
-
 {
     text txt = create_text();
     load(txt, filename);
+    mcursor(txt, 1, 1);
+    char* firstline = txt->cursor->line->contents;
     unsigned long ln1 = txt->length;
-    mcursor(txt, 2, 1);
+    mcursor(txt, 3, 1);
     ln1--;
     rc(txt);
     unsigned long ln2 = txt->length;
     EXPECT_EQ(txt->cursor->position, 0);
     EXPECT_EQ(ln1, ln2);
+    EXPECT_EQ(firstline, txt->begin->contents);
     remove_all(txt);
+}
+
+TEST(rmstr, onestr)
+{
+  text txt = create_text();
+  load(txt, oneline);
+  rc(txt);
+  EXPECT_EQ(txt->begin, nullptr);
+  remove_all(txt);
 }
 
 TEST(rmstr, laststr)
@@ -204,6 +216,16 @@ TEST(mwbb, normal)
     current = current->next;
     }
     EXPECT_EQ(k, 2);
+    remove_all(txt);
+}
+
+TEST(mwbb, twospace)
+{
+    text txt = create_text();
+    load(txt, oneline);
+    mcursor(txt, 1, 16);
+    mwbb(txt);
+    EXPECT_EQ(txt->cursor->position, 16);
     remove_all(txt);
 }
 

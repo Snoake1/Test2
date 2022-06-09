@@ -15,7 +15,7 @@ void save(text txt, char *filename)
     
     if ((f = fopen(filename, "w")) == NULL)
     {
-	printf("The file %s cannot be written\n", filename);
+    fprintf(stderr, "The file %s cannot be written\n", filename);
 	return;
     }
 

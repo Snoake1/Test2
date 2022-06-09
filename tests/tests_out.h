@@ -14,6 +14,7 @@ extern "C"{
 
 char* filenm = "input.txt";
 
+
 TEST(load, noreadfile)
 {
     text txt = create_text();
@@ -28,17 +29,17 @@ TEST(save, nowritefile)
 {
     text txt = create_text();
     load(txt, filenm);
-    testing::internal::CaptureStderr;
-    save(txt, "nowritefile.txt");
+    testing::internal::CaptureStderr();
+    save(txt, INPUTDIR "/nowritefile.txt");
     std::string out = testing::internal::GetCapturedStderr();
-    EXPECT_EQ(out, "The file nowritefile.txt cannot be written\n");
+    EXPECT_EQ(out, "The file " INPUTDIR "/nowritefile.txt cannot be written\n");
     remove_all(txt);
 }
 
 TEST(save, nofile)
 {
     text txt = create_text();
-    testing::internal::CaptureStderr;
+    testing::internal::CaptureStderr();
     save(txt, "out.txt");
     std::string outp = testing::internal::GetCapturedStderr();
     EXPECT_EQ(outp, "The text doesn`t exist\n");
@@ -139,6 +140,37 @@ TEST(snempty, conspace)
    std::string out = testing::internal::GetCapturedStdout();
    ASSERT_EQ(out, "qwe|rtyASD asdsweASD \nrewvaf1321\n321\n321\n");
    remove_all(txt);
+}
+
+TEST(snempty, empty)
+{
+    text txt = create_text();
+    testing::internal::CaptureStdout();
+    shownonempty(txt);
+    std::string out = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(out, "");
+    remove_all(txt);
+}
+
+TEST(snempty, emptylines)
+{
+    text txt = create_text();
+    load(txt, "emptyfile.txt");
+    testing::internal::CaptureStdout();
+    shownonempty(txt);
+    std::string out = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(out, "");
+    remove_all(txt);
+}
+
+TEST(rmstr, noline)
+{
+    text txt = create_text();
+    testing::internal::CaptureStderr();
+    rc(txt);
+    std::string out = testing::internal::GetCapturedStderr();
+    EXPECT_EQ(out, "No cursor in string\n");
+    remove_all(txt);
 }
 
 #endif
